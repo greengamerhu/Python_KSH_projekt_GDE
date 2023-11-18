@@ -76,3 +76,5 @@ while True:
     else:
         print("Hibás szolgáltatás száma! Próbálja újra.")
         time.sleep(2)
+
+        #Comment
