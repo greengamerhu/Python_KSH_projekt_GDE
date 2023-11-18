@@ -1,5 +1,7 @@
 import time
 from adatbeolvasas import adat
+import pandas as pnd
+import matplotlib as plt
 # Adatok vezetekes csatlakozasokhoz
 def wired():
     print("Hello")
