@@ -29,17 +29,17 @@ def adat():
         print(vezetek_nelkuli_halozaton)
         print(osszesen)
     except FileNotFoundError:
-        print("A fájl nem található. ")
+        print("A fajl nem találhato. ")
     except ValueError:
-        print("Nem megfelelő adatok a fájlban.")
+        print("Nem megfelelo adatok a fajlban.")
     except PermissionError:
-        print("Nincs jogosultság a fájl megnyitására. ")
+        print("Nincs jogosultsag a fajl megnyitásara. ")
     except Exception as e:
-        print("Valami hiba történt: ", e)
+        print("Valami hiba tortent: ", e)
     else:
         print("A file sikeresen beolvasva. ")
     finally:
-        print("A kód véget ért.")
+        print("A kod veget ert.")
         return vezetekes_osszesen, vezetekes_kapcsolt_vonal, xdsl_halozaton, kabeltv_halozaton, optikai_halozaton, vezetek_nelkuli_halozaton, osszesen
 
 

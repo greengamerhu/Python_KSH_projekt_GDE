@@ -1,34 +1,34 @@
 import time
 from adatbeolvasas import adat
-# Adatok vezetékes csatlakozásokhoz
+# Adatok vezetekes csatlakozasokhoz
 def wired():
     print("Hello")
 
-# Adatok a csatlakozási vonali szolgáltatásokhoz
+# Adatok a csatlakozasi vonali szolgaltatasokhoz
 def connection_line():
     pass
 
-# Adatok az XDSL hálózati szolgáltatásokhoz
+# Adatok az XDSL halozati szolgaltatasokhoz
 def XDSL_network():
     pass
 
-# Kábel TV hálózati szolgáltatások adatai
+# Kabel TV halozati szolgaltatasok adatai
 def cable_TV_network():
     pass
 
-# Adatok az optikai hálózati szolgáltatásokhoz
+# Adatok az optikai halozati szolgaltatásokhoz
 def optical_network():
     pass
 
-# Adatok vezeték nélküli szolgáltatásokhoz
+# Adatok vezetek nelkuli szolgaltatasokhoz
 def wireless():
     pass
 
-# Adatok az összes szolgáltatásra vonatkozóan
+# Adatok az osszes szolgaltatasra vonatkozoan
 def total():
     pass
 
-hálózati_szolgáltatások = {
+halozati_szolgaltatasok = {
     "1": "Vezetekes",
     "2": "Kapcsolt vonal (modem segitsegevel) + ISDN",
     "3": "XDSL halozat",
@@ -42,39 +42,39 @@ print(vezetekes_osszesen)
 print(osszesen)
 
 while True:
-    print("Válassza ki a hozzáférési szolgáltatást:")
-    for számkód, szolgaltatas in hálózati_szolgáltatások.items():
-        print(f"{számkód} - {szolgaltatas}")
+    print("Valassza ki a hozzaferesi szolgaltatast:")
+    for szamkod, szolgaltatas in halozati_szolgaltatasok.items():
+        print(f"{szamkod} - {szolgaltatas}")
     print("0 - Kilepes")
 
-    számkód = input("Adja meg a megtekinteni kivant lekereshez tartozó számot: ")
+    szamkod = input("Adja meg a megtekinteni kivant lekereshez tartozo szamot: ")
 
-    if számkód == "0":
-        print("Kilépés...")
+    if szamkod == "0":
+        print("Kilepes...")
         time.sleep(1)
         break
-    elif számkód in hálózati_szolgáltatások:
+    elif szamkod in halozati_szolgaltatasok:
         data = None
-        if számkód == "1":
+        if szamkod == "1":
             data = wired()
-        elif számkód == "2":
+        elif szamkod == "2":
             data = connection_line()
-        elif számkód == "3":
+        elif szamkod == "3":
             data = XDSL_network()
-        elif számkód == "4":
+        elif szamkod == "4":
             data = cable_TV_network()
-        elif számkód == "5":
+        elif szamkod == "5":
             data = optical_network()
-        elif számkód == "6":
+        elif szamkod == "6":
             data = wireless()
-        elif számkód == "7":
+        elif szamkod == "7":
             data = total()
 
-        print(f"A {hálózati_szolgáltatások[számkód]} hozzáférési szolgáltatásra vonatkozó adatok: {data}")
-        print("Ha szeretne kilépni, nyomja meg a '0' gombot!")
+        print(f"A {halozati_szolgaltatasok[szamkod]} hozzaferesi szolgaltatasra vonatkozo adatok: {data}")
+        print("Ha szeretne kilepni, nyomja meg a '0' gombot!")
         time.sleep(2)
     else:
-        print("Hibás szolgáltatás száma! Próbálja újra.")
+        print("Hibas szolgaltatas szama! Probálja ujra.")
         time.sleep(2)
 
         #Comment
