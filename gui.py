@@ -1,5 +1,7 @@
 import time
 from adatbeolvasas import adat
+import pandas as pnd
+import matplotlib as plt
 # Adatok vezetékes csatlakozásokhoz
 def wired():
     print("Hello")
@@ -78,3 +80,4 @@ while True:
         time.sleep(2)
 
         #Comment
+
