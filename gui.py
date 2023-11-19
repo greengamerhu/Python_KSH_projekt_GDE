@@ -1,34 +1,105 @@
 import time
 from adatbeolvasas import adat
 import pandas as pnd
-import matplotlib as plt
+import matplotlib.pyplot as plt
+plt.ticklabel_format(style='plain') # az y tengelyen megjeleno adatok formajanak beallitasa
+vezetekes_osszesen, vezetekes_kapcsolt_vonal, xdsl_halozaton, kabeltv_halozaton, optikai_halozaton, vezetek_nelkuli_halozaton, osszesen = adat()
+
 # Adatok vezetekes csatlakozasokhoz
 def wired():
-    print("Hello")
+    plt.title("Vezetékes hálózatok alakulása") # a grafikon nevet bealitom
+    #xy tengelyek felcimkezese
+    plt.ylabel("előfizetések száma")
+    plt.xlabel("Év")
+    #a grafikon adatainak megadasa
+    plt.plot(vezetekes_osszesen.keys(), vezetekes_osszesen.values())
+    plt.show()
 
 # Adatok a csatlakozasi vonali szolgaltatasokhoz
 def connection_line():
-    pass
+    plt.title("A kapcsolt vezetékes hálózatok alakulása") # a grafikon nevet bealitom
+    #xy tengelyek felcimkezese
+    plt.ylabel("előfizetések száma")
+    plt.xlabel("Év")
+    #a grafikon adatainak megadasa
+    plt.plot(vezetekes_kapcsolt_vonal.keys(), vezetekes_kapcsolt_vonal.values())
+    plt.show()
 
 # Adatok az XDSL halozati szolgaltatasokhoz
 def XDSL_network():
-    pass
+    plt.title("Az XDSL vezetékes hálózatok alakulása") # a grafikon nevet bealitom
+    #xy tengelyek felcimkezese
+    plt.ylabel("előfizetések száma")
+    plt.xlabel("Év")
+    #a grafikon adatainak megadasa
+    plt.plot(xdsl_halozaton.keys(), xdsl_halozaton.values())
+    plt.show()
 
 # Kabel TV halozati szolgaltatasok adatai
 def cable_TV_network():
-    pass
+    plt.ticklabel_format(style='plain') # eddigre valamiert elfelejtette azt hogy en ezt beallítottam neki.....
+    plt.title("A kábel-TV kapcsolatos hálózatok alakulása")  # a grafikon nevet bealitom
+    # xy tengelyek felcimkezese
+    plt.ylabel("előfizetések száma")
+    plt.xlabel("Év")
+    # a grafikon adatainak megadasa
+    plt.plot(kabeltv_halozaton.keys(), kabeltv_halozaton.values())
+    plt.show()
 
 # Adatok az optikai halozati szolgaltatásokhoz
 def optical_network():
-    pass
+    plt.ticklabel_format(style='plain')
+    plt.title("Az optikai hálózatok alakulása")  # a grafikon nevet bealitom
+    # xy tengelyek felcimkezese
+    plt.ylabel("előfizetések száma")
+    plt.xlabel("Év")
+    # a grafikon adatainak megadasa
+    plt.plot(optikai_halozaton.keys(), optikai_halozaton.values())
+    plt.show()
 
 # Adatok vezetek nelkuli szolgaltatasokhoz
 def wireless():
-    pass
+    plt.title("A vezeték nélküli hálózatok alakulása")  # a grafikon nevet bealitom
+    # xy tengelyek felcimkezese
+    plt.ylabel("előfizetések száma")
+    plt.xlabel("Év")
+    # a grafikon adatainak megadasa
+    plt.plot(vezetek_nelkuli_halozaton.keys(), vezetek_nelkuli_halozaton.values())
+    plt.show()
 
 # Adatok az osszes szolgaltatasra vonatkozoan
 def total():
-    pass
+    plt.title("Az internet hozzáférés alakulása")  # a grafikon nevet bealitom
+    # xy tengelyek felcimkezese
+    plt.ylabel("előfizetések száma")
+    plt.xlabel("Év")
+    # a grafikon adatainak megadasa
+    plt.plot(osszesen.keys(), osszesen.values())
+    plt.show()
+def wired_technologies_compared():
+    plt.title("A különböző vezetékes hálózatok alakulása") # a grafikon nevet bealitom
+    #xy tengelyek felcimkezese
+    plt.ylabel("előfizetések száma")
+    plt.xlabel("Év")
+    #a grafikon adatainak megadasa, bealitom a színét a vonalaknak és cimkeket
+    plt.plot(vezetekes_kapcsolt_vonal.keys(), vezetekes_kapcsolt_vonal.values(), color="r", label="vezetekes kapcsolt vonal")
+    plt.plot(xdsl_halozaton.keys(), xdsl_halozaton.values(), color="g", label="XDSL")
+    plt.plot(kabeltv_halozaton.keys(), kabeltv_halozaton.values(), color="b", label="Kábel Tv")
+    plt.plot(optikai_halozaton.keys(), optikai_halozaton.values(), color="c", label="Optikai")
+    plt.legend()
+    plt.show()
+def all_networks_compared_2022_barchart():
+    year = str(2022)
+    dataByYear = {
+        "VezetekesKapcsolt" :  vezetekes_kapcsolt_vonal.get(year),
+        "XDSL" : xdsl_halozaton.get(year),
+        "KabelTV" : kabeltv_halozaton.get(year),
+        "Optikai" : optikai_halozaton.get(year),
+        "VezetekNelkuli":  vezetek_nelkuli_halozaton.get(year)
+    }
+    barplot = plt.bar(dataByYear.keys(), dataByYear.values())
+    plt.bar_label(barplot, dataByYear.values())
+    plt.show()
 
 halozati_szolgaltatasok = {
     "1": "Vezetekes",
@@ -37,11 +108,11 @@ halozati_szolgaltatasok = {
     "4": "Kabel-tv halozat",
     "5": "Optikai halozat",
     "6": "Vezetek nelkuli",
-    "7": "Osszesen"
+    "7": "Osszesen",
+    "8" : "A vezetékes halozatok alakulasa osszevetve",
+    "9" : "2022 minden halozat osszevetve"
 }
-vezetekes_osszesen, vezetekes_kapcsolt_vonal, xdsl_halozaton, kabeltv_halozaton, optikai_halozaton, vezetek_nelkuli_halozaton, osszesen = adat()
-print(vezetekes_osszesen)
-print(osszesen)
+
 
 while True:
     print("Valassza ki a hozzaferesi szolgaltatast:")
@@ -71,6 +142,10 @@ while True:
             data = wireless()
         elif szamkod == "7":
             data = total()
+        elif szamkod == "8":
+            data = wired_technologies_compared()
+        elif szamkod == "9":
+            data = all_networks_compared_2022_barchart()
 
         print(f"A {halozati_szolgaltatasok[szamkod]} hozzaferesi szolgaltatasra vonatkozo adatok: {data}")
         print("Ha szeretne kilepni, nyomja meg a '0' gombot!")
