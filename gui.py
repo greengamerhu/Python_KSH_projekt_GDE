@@ -14,7 +14,10 @@ def wired():
     #a grafikon adatainak megadasa
     plt.plot(vezetekes_osszesen.keys(), vezetekes_osszesen.values())
     plt.show()
-
+    tablazat = ""
+    for item in kabeltv_halozaton.items():
+        tablazat += '\n'+ str(item)
+    return tablazat
 # Adatok a csatlakozasi vonali szolgaltatasokhoz
 def connection_line():
     plt.title("A kapcsolt vezetékes hálózatok alakulása") # a grafikon nevet bealitom
@@ -24,6 +27,10 @@ def connection_line():
     #a grafikon adatainak megadasa
     plt.plot(vezetekes_kapcsolt_vonal.keys(), vezetekes_kapcsolt_vonal.values())
     plt.show()
+    tablazat = ""
+    for item in vezetekes_kapcsolt_vonal.items():
+        tablazat += '\n'+ str(item)
+    return tablazat
 
 # Adatok az XDSL halozati szolgaltatasokhoz
 def XDSL_network():
@@ -34,7 +41,10 @@ def XDSL_network():
     #a grafikon adatainak megadasa
     plt.plot(xdsl_halozaton.keys(), xdsl_halozaton.values())
     plt.show()
-
+    tablazat = ""
+    for item in xdsl_halozaton.items():
+        tablazat += '\n'+ str(item)
+    return tablazat
 # Kabel TV halozati szolgaltatasok adatai
 def cable_TV_network():
     plt.ticklabel_format(style='plain') # eddigre valamiert elfelejtette azt hogy en ezt beallítottam neki.....
@@ -45,7 +55,10 @@ def cable_TV_network():
     # a grafikon adatainak megadasa
     plt.plot(kabeltv_halozaton.keys(), kabeltv_halozaton.values())
     plt.show()
-
+    tablazat = ""
+    for item in kabeltv_halozaton.items():
+        tablazat += '\n'+ str(item)
+    return tablazat
 # Adatok az optikai halozati szolgaltatásokhoz
 def optical_network():
     plt.ticklabel_format(style='plain')
@@ -70,6 +83,10 @@ def wireless():
     # a grafikon adatainak megadasa
     plt.plot(vezetek_nelkuli_halozaton.keys(), vezetek_nelkuli_halozaton.values())
     plt.show()
+    tablazat = ""
+    for item in vezetek_nelkuli_halozaton.items():
+        tablazat += '\n'+ str(item)
+    return tablazat
 
 # Adatok az osszes szolgaltatasra vonatkozoan
 def total():
@@ -80,6 +97,10 @@ def total():
     # a grafikon adatainak megadasa
     plt.plot(osszesen.keys(), osszesen.values())
     plt.show()
+    tablazat = ""
+    for item in osszesen.items():
+        tablazat += '\n'+ str(item)
+    return tablazat
 def wired_technologies_compared():
     plt.title("A különböző vezetékes hálózatok alakulása") # a grafikon nevet bealitom
     #xy tengelyek felcimkezese
@@ -151,9 +172,11 @@ while True:
             data = wired_technologies_compared()
         elif szamkod == "9":
             data = all_networks_compared_2022_barchart()
-
-        print(f"A {halozati_szolgaltatasok[szamkod]} hozzaferesi szolgaltatasra vonatkozo adatok: {data}")
-        print("Ha szeretne kilepni, nyomja meg a '0' gombot!")
+        if(szamkod == "8" or szamkod == "9"):
+            print("Ha szeretne kilepni, nyomja meg a '0' gombot!")
+        else:
+            print(f"A {halozati_szolgaltatasok[szamkod]} hozzaferesi szolgaltatasra vonatkozo adatok: {data}")
+            print("Ha szeretne kilepni, nyomja meg a '0' gombot!")
         time.sleep(2)
     else:
         print("Hibas szolgaltatas szama! Probálja ujra.")
