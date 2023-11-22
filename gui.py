@@ -56,6 +56,10 @@ def optical_network():
     # a grafikon adatainak megadasa
     plt.plot(optikai_halozaton.keys(), optikai_halozaton.values())
     plt.show()
+    tablazat = ""
+    for item in optikai_halozaton.items():
+        tablazat += '\n'+ str(item)
+    return tablazat
 
 # Adatok vezetek nelkuli szolgaltatasokhoz
 def wireless():
@@ -89,6 +93,7 @@ def wired_technologies_compared():
     plt.legend()
     plt.show()
 def all_networks_compared_2022_barchart():
+    plt.ticklabel_format(style='plain')
     year = str(2022)
     dataByYear = {
         "VezetekesKapcsolt" :  vezetekes_kapcsolt_vonal.get(year),
