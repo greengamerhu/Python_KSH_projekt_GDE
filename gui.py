@@ -165,7 +165,7 @@ halozati_szolgaltatasok = {
     "6": "Vezetek nelkuli",
     "7": "Osszesen",
     "8" : "A vezetékes halozatok alakulasa osszevetve",
-    "9" : "2022 minden halozat osszevetve"
+    "9" : "2022 minden halozat osszevetve",
     "10" : "lineáris regresszio"
 }
 
