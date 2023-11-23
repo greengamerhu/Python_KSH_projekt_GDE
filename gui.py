@@ -7,6 +7,7 @@ vezetekes_osszesen, vezetekes_kapcsolt_vonal, xdsl_halozaton, kabeltv_halozaton,
 
 # Adatok vezetekes csatlakozasokhoz
 def wired():
+    plt.ticklabel_format(style='plain')
     plt.title("Vezetékes hálózatok alakulása") # a grafikon nevet bealitom
     #xy tengelyek felcimkezese
     plt.ylabel("előfizetések száma")
