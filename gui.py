@@ -166,7 +166,7 @@ halozati_szolgaltatasok = {
     "7": "Osszesen",
     "8" : "A vezetékes halozatok alakulasa osszevetve",
     "9" : "2022 minden halozat osszevetve"
-    "10" : "Az internet hozzáférés alakulása trend vonalal"
+    "10" : "lineáris regresszio"
 }
 
 
@@ -202,6 +202,8 @@ while True:
             data = wired_technologies_compared()
         elif szamkod == "9":
             data = all_networks_compared_2022_barchart()
+        elif szamkod == "10":
+            data = linear_regression()
         if(szamkod == "8" or szamkod == "9"):
             print("Ha szeretne kilepni, nyomja meg a '0' gombot!")
         else:
