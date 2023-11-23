@@ -1,6 +1,5 @@
 import time
 from adatbeolvasas import adat
-import pandas as pnd
 import numpy as np
 import matplotlib.pyplot as plt
 plt.ticklabel_format(style='plain') # az y tengelyen megjeleno adatok formajanak beallitasa
