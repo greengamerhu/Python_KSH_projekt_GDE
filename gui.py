@@ -132,7 +132,7 @@ def all_networks_compared_2022_barchart():
 
 def linear_regression():
     plt.ticklabel_format(style='plain')
-    plt.title("Az internet hozzáférés alakulása trend vonalal")  # a grafikon nevet bealitom
+    plt.title("Az internet hozzáférés alakulása trend vonallal")  # a grafikon nevet bealitom
     # xy tengelyek felcimkezese
     plt.ylabel("előfizetések száma")
     plt.xlabel("Év")
