@@ -1,6 +1,7 @@
 import time
 from adatbeolvasas import adat
 import pandas as pnd
+import numpy as np
 import matplotlib.pyplot as plt
 plt.ticklabel_format(style='plain') # az y tengelyen megjeleno adatok formajanak beallitasa
 vezetekes_osszesen, vezetekes_kapcsolt_vonal, xdsl_halozaton, kabeltv_halozaton, optikai_halozaton, vezetek_nelkuli_halozaton, osszesen = adat()
@@ -128,6 +129,33 @@ def all_networks_compared_2022_barchart():
     plt.bar_label(barplot, dataByYear.values())
     plt.show()
 
+#regreszio
+
+def linear_regression():
+    plt.ticklabel_format(style='plain')
+    plt.title("Az internet hozzáférés alakulása trend vonalal")  # a grafikon nevet bealitom
+    # xy tengelyek felcimkezese
+    plt.ylabel("előfizetések száma")
+    plt.xlabel("Év")
+
+    plot_x = []
+    #Mivel szorozni nem igazán lehet string-el ezért kénytelen voltam átalakítani
+    for i in osszesen.keys():
+        plot_x.append(int(i))
+    plot_y = list(osszesen.values())
+    coef = np.polyfit(plot_x, plot_y, 1)
+    y_pred = []
+    for i in plot_x:
+        y_pred.append(coef[0] * i + coef[1])
+    # a grafikon adatainak megadasa
+    plt.xticks(plot_x)  # az x tengely egészek megjelenítésére rákényszerítése
+    plt.plot(plot_x, plot_y, label="Internetes előfizetések alakulása")
+    plt.plot(plot_x, y_pred, label="Lineáris Regresszió")
+    plt.legend()
+    print("A 2024-es várható előfizetések száma: {:.2f}".format(coef[0] * 2023 + coef[1]))
+    plt.show()
+
+
 halozati_szolgaltatasok = {
     "1": "Vezetekes",
     "2": "Kapcsolt vonal (modem segitsegevel) + ISDN",
@@ -138,6 +166,7 @@ halozati_szolgaltatasok = {
     "7": "Osszesen",
     "8" : "A vezetékes halozatok alakulasa osszevetve",
     "9" : "2022 minden halozat osszevetve"
+    "10" : "Az internet hozzáférés alakulása trend vonalal"
 }
 
 
